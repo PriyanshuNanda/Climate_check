@@ -1,7 +1,7 @@
 import 'package:climate/services/location.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-const apiKey='bc774d7ca6dc9cd2720927b92767dc76';
+const apiKey='960117323989562ba4f4e779af332c75';
 const openWeatherURL='https://api.openweathermap.org/data/2.5/weather';
 class WeatherModel {
   Future<dynamic> getCityLocation(String cityName)async {
@@ -20,8 +20,8 @@ class WeatherModel {
     await location.getCurrentLocation();
     http.Response response = await http.get(Uri.parse(
         '$openWeatherURL?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric'));
-    print(location.longitude);
-    print(location.latitude);
+    // print(location.longitude);
+    // print(location.latitude);
     if (response.statusCode == 200) {
       String data = response.body;
       var jData = jsonDecode(data);

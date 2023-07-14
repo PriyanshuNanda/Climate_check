@@ -16,6 +16,7 @@ class _LocationScreenState extends State<LocationScreen> {
   int temperature = 0;
   String cityName = '';
   String weatherMessage = '';
+  String condition='';
   @override
   void initState() {
     super.initState();
@@ -37,6 +38,7 @@ class _LocationScreenState extends State<LocationScreen> {
         cityName = jData['name'];
         temperature = temp.toInt();
         weatherMessage = weatherModel.getMessage(temperature);
+        condition=jData['weather'][0]['main'];
       }
       // print(cityName);
     });
@@ -113,6 +115,7 @@ class _LocationScreenState extends State<LocationScreen> {
                   ],
                 ),
               ),
+              Center(child: Text(condition,style:kTempTextStyle ,)),
               Padding(
                 padding: const EdgeInsets.only(right: 15.0),
                 child: Text(
